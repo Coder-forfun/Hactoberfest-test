@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">REtrofit</string>
+    <string name="coronavirus_statistics">Coronavirus Statistics</string>
+    <string name="refresh">Refresh</string>
+</resources>
