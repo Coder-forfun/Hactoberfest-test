@@ -1,0 +1,50 @@
+Problem Description : 
+
+    Given an array S of n integers, find three integers in S such that the sum is closest to a given number, target. 
+
+    Return the sum of the three integers.
+
+    Assume that there will only be one solution
+
+    Example: 
+
+        given array S = {-1 2 1 -4}, 
+
+        and target = 1.
+
+        The sum that is closest to the target is 2. (-1 + 2 + 1 = 2)
+        
+        
+Solution :
+
+
+int Solution::threeSumClosest(vector<int> &A, int B) {
+    sort(A.begin(), A.end());
+
+    int i, j, sum, n = A.size();
+    int M = INT_MIN, m = INT_MAX;
+    
+    for(int k = 0; k < n; k++){
+        i = k+1;
+        j = n-1;
+        sum = B - A[k];
+        while(i < j){
+            if(A[i] + A[j] == sum){
+                return B;
+            }
+            else if(A[i] + A[j] < sum){
+                M = max(M, A[i] + A[j] + A[k]);
+                i++;
+            }
+            else{
+                m = min(m, A[i] + A[k] + A[j]);
+                j--;
+            }
+        }
+    }
+
+    long long a = (long long)B - (long long)M;
+    long long b = (long long)m - (long long)B;
+
+    return (a < b) ? M : m;
+}
